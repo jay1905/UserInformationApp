@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" type="text/css" href="/css/jaime.css">
-
 </head>
 <body>
   <% include ./navBar/header%>
   <div class="center">
-
-
-  <h1>SEARCHED USER: <%= data.SearchName %></h1>
-<br>
-<% let match = false %>
-
-  <h1>Matching user:</h1><br>
-    <% users.forEach(function(thing){ %>
-      <h2>
+    <h1>SEARCHED USER: <%= data.SearchName %></h1><br><!--display search result-->
+    <% let match = false %><!--this will determin if there is a match or not-->
+    <h1>Matching user:</h1><br>
+    <% users.forEach(function(thing){ %><!-- loop through users to find a match-->
+    <h2>
         <%if(thing.firstname==data.SearchName||thing.lastname==data.SearchName){%>
-        <%- `Name: ${thing.firstname} ${thing.lastname}`%><br>
+        <%- `Name: ${thing.firstname} ${thing.lastname}`%><br><!--if ther is a match display it-->
         <%- `email: ${thing.email}` %>
-          <% match =true%>
-      <%  }%>
-      </h2>
-        <% }) %>
-
-    <% if(match==false){ %>
+        <% match =true%><!--set match = true for later check-->
+      <% }%>
+    </h2>
+    <% }) %>
+    <% if(match==false){ %><!--if there is no match  display NO Match-->
       NO Match
     <%}%>
-    </div>
+  </div>
 </body>
