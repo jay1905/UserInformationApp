@@ -1,0 +1,22 @@
+.body{
+    background-color: blue;
+
+}
+.user {
+  float:left;
+  border: solid 1px black;
+  margin:20px;
+  text-align: center;
+  color: black;
+}
+
+.user ul{
+  padding: 5px;
+  background-color: grey;
+
+  margin:0;
+
+}
+.center{
+  text-align: center;
+}

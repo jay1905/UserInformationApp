@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/jaime.css">
+
+</head>
+<body>
+  <% include ./navBar/header%>
+  <div class="center">
+      <h1>USERS:</h1>
+
+    <form action="/searchUser" method="post">
+      Search:<br>
+      <input type="text" name="SearchName" value="">
+
+      <br><br>
+      <input type="submit" value="search">
+    </form>
+  </div>
+</body>

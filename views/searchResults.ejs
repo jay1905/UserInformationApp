@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/jaime.css">
+
+</head>
+<body>
+  <% include ./navBar/header%>
+  <div class="center">
+
+
+  <h1>SEARCHED USER: <%= data.SearchName %></h1>
+<br>
+<% let match = false %>
+
+  <h1>Matching user:</h1><br>
+    <% users.forEach(function(thing){ %>
+      <h2>
+        <%if(thing.firstname==data.SearchName||thing.lastname==data.SearchName){%>
+        <%- `Name: ${thing.firstname} ${thing.lastname}`%><br>
+        <%- `email: ${thing.email}` %>
+          <% match =true%>
+      <%  }%>
+      </h2>
+        <% }) %>
+
+    <% if(match==false){ %>
+      NO Match
+    <%}%>
+    </div>
+</body>

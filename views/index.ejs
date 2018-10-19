@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/jaime.css">
+
+</head>
+<body>
+  <% include ./navBar/header%>
+  <div class="center">
+
+  <h1>USERS:</h1>
+
+
+  <% users.forEach(function(thing){ %>
+    <div class="user">
+      <ul>
+        Name: <%= thing.firstname +' ' +thing.lastname %>
+        <br>
+        email: <%= thing.email %>
+      </ul>
+
+    </div>
+  <% }) %>
+
+</div>
+</body>
