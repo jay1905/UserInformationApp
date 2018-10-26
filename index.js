@@ -20,8 +20,26 @@ app.get('/search', (req, res) => res.render('search'))
 app.get('/addUser', (req, res) => res.render('addUser'))
 
 app.post('/searchUser',(req,res)=>{
-  res.render('searchResults',{data:req.body,users})//search results are stored in req.body
+  res.render('searchResults',{data:req.body,usr:searchForUser(req.body.SearchName)})//search results are stored in req.body
 })
+
+app.post('/ajax', (req, res) => {
+   res.send(searchForUser(req.body.myusername))
+})
+const searchForUser=(x)=>{
+  let potentialMatch = []
+  let lcInput = (x).toLowerCase()
+  lcInput= lcInput.replace(/\s+/g, '')
+    users.forEach(function(thing){
+        let lcUser = (thing.firstname+thing.lastname).toLowerCase()
+        lcUser = lcUser.replace(/\s+/g, '')
+        if(lcUser.indexOf(lcInput)!==-1 &&lcInput!==''){
+          potentialMatch.push(thing)
+         }
+    })
+    return potentialMatch
+}
+
 app.post('/add',(req,res)=>{//request to add user
   users.push({//add user to my array users
       firstname: req.body.firstName,

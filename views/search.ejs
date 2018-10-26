@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" type="text/css" href="/css/jaime.css">
+
 </head>
 <body>
   <% include ./navBar/header%>
@@ -8,9 +8,33 @@
     <h1>USERS:</h1>
     <form action="/searchUser" method="post">
       Search:<br>
-      <input type="text" name="SearchName" value="">
+      <input id="textBox"type="text" name="SearchName" list='cat' value="">
       <br><br>
       <input type="submit" value="search">
+
     </form>
+    <datalist id="cat" class=""></datalist>
+
   </div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+      let lastTime=0
+      let currentTime=0
+      let myusername
+      $("#textBox").keyup(function(){
+        myusername = $("#textBox").val();
+        currentTime= Date.now()-lastTime
+        $('#cat').empty();
+        if (currentTime>300) {
+            $.post('/ajax',{myusername:myusername},function(response){
+              for (var i = 0; i < response.length; i++) {
+                $('#cat').append("<option value='"+response[i].firstname+' '+response[i].lastname+ "'></option>")
+              }
+            })
+          lastTime=Date.now()
+        }
+      })
+  })
+</script>
 </body>
